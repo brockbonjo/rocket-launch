@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<table>
+    <thead>
+        <tr>
+            <th>Rocket/Mission</th>
+            <th>Agency</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% launches.forEach(function(l) { %>
+        <tr>
+            <td><%= l.name %></td>
+            <td><%= l.location.pads.agencies %></td>
+            <td><%= l.location.name %></td>
+            <td><%= l.windowStart.toLocaleDateString() %></td>
+            <td><%= l.windowStart.toLocaleTimeString() %></td>
+            <td><a href="/launches/<%= l._id %>">DETAILS</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+  
+<%- include('../partials/footer') %>
