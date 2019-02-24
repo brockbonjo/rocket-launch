@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 const rootURL = 'https://launchlibrary.net/1.4/launch/next/100';
+var launchesCtrl = require('../controllers/launches');
+
+router.get('/:id', isLoggedIn, launchesCtrl.details);
 
 
 router.get('/', isLoggedIn, function (req, res, next) {

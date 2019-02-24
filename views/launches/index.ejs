@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+
+<h1>UPCOMING LAUNCHES</h1>
 <table>
     <thead>
         <tr>
@@ -19,7 +21,7 @@
             <td><%= l.location.name %></td>
             <td><%= (new Date(l.windowstart)).toDateString() %></td>
             <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
-            <td><a href="/launches/<%= l._id %>">DETAILS</a></td>
+            <td><a href="/launches/<%= l.id %>">DETAILS</a></td>
             <td>
                 <form method="POST" action="/favorites">
                     <input type="hidden" name="launchId" value="<%= l.id %>" />

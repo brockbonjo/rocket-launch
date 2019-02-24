@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var favoritesCtrl = require('../controllers/favorites');
 
-router.get('/', function(req, res, next) {
-  res.send('This is working');
-})
+router.get('/', favoritesCtrl.show);
 
 router.post('/', favoritesCtrl.create);
 
