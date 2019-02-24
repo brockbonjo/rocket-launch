@@ -1,26 +1,25 @@
 <%- include('../partials/header') %>
-<table>
-    <thead>
-        <tr>
-            <th>Rocket/Mission</th>
-            <th>Agency</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% launches.forEach(function(l) { %>
-        <tr>
-            <td><%= l.name %></td>
-            <td><%= l.location.pads.agencies %></td>
-            <td><%= l.location.name %></td>
-            <td><%= l.windowStart.toLocaleDateString() %></td>
-            <td><%= l.windowStart.toLocaleTimeString() %></td>
-            <td><a href="/launches/<%= l._id %>">DETAILS</a></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table>
-  
+    <table>
+        <thead>
+            <tr>
+                <th>ROCKET MISSION</th>
+                <th>AGENCY</th>
+                <th>LOCATION</th>
+                <th>DATE</th>
+                <th>TIME</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% launchData.launches.forEach(function(l) { %>
+            <tr>
+                <td><%= l.name %></td>
+                <td><%= l.lsp.name %></td>
+                <td><%= l.location.name %></td>
+                <td><%= (new Date(l.windowstart)).toDateString() %></td>
+                <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
+                <td><a href="/launches/<%= l._id %>">DETAILS</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
 <%- include('../partials/footer') %>

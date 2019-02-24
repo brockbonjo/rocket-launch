@@ -1,25 +1,28 @@
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 
-// var launchSchema = new mongoose.Schema({
-//     name: String,
-//     rocket: String,
-//     missions: String,
-//     windowstart: Date,
-//     vidURLs: String,
-//     location: { 
-//         name: String,
-//         countryCode: String,
-//         pads: {
-//             mapURL: String,
-//             agencies: {
-//                 name: String,
-//                 wikiURL: String,
-//                 infoURLs: String,
-//             }
-//         }
-//     }
+var favoriteSchema = new mongoose.Schema({
+    name: String,
+    rocket: {
+        name: String,
+    },
+    missions: [{
+        name: String,
+    }],
+    lsp: {
+        name: String,
+    },
+    windowstart: String,
+    vidURLs: [String],
+    location: { 
+        name: String,
+        countryCode: String,
+        pads: 
+            [{mapURL: String
+            }]
+        }
+    }
+)
 
-// })
-
-// module.exports = mongoose.model('Launch', launchSchema);
+module.exports = mongoose.model('Favorite', favoriteSchema);
