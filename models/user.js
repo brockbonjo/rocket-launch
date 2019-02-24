@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    launches: [{type: Schema.Types.ObjectId, ref: 'Launch'}],
+    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
     googleId: String
 }, {
     timestamps: true
