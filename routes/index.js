@@ -4,9 +4,15 @@ var passport = require('passport');
 
 
 
-router.get('/', function (req, res, next) {
+router.get('/', isLoggedIn, function (req, res, next) {
   res.render('index');
 });
+
+function isLoggedIn(req, res, next) {
+  if ( req.isAuthenticated() ) return next();
+  res.redirect('/auth/google');
+};
+
 
  // Google OAuth login route
 router.get('/auth/google', passport.authenticate(

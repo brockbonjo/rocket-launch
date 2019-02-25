@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
+    favorites: [Number],
     googleId: String
 }, {
     timestamps: true

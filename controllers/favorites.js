@@ -1,48 +1,40 @@
-var Favorite = require('../models/favorite');
+var User = require('../models/user');
 var request = require('request');
 const rootURL = 'https://launchlibrary.net/1.4/launch/';
 
 module.exports = {
-    create,
+    addToUser,
     show,
 };
 
 function show(req, res) {
-    Favorite.find({}, function (err, favorites) {
-        // res.send(favorites)
-        let allFavoritesId = favorites.map(function (f) {
-            return f.launchId
+    //populate the favorites property so you can use each item in its array to build a url to call from the API
+    User.findById(req.user._id)
+        .populate('favorites').exec(function (err, user) {
+            var url = rootURL + "?";
+            req.user.favorites.forEach(function (launchId) {
+                url += "id=" + launchId + "&";
+            });
+            //call url from API, parse the JSON and render the favorites view page
+            request(url, function (err, response, body) {
+                var launchData = JSON.parse(body);
+                res.render('launches/favorites', { launchData });
+            });
         });
-        var url = rootURL + "?";
-        allFavoritesId.forEach(function (i) {
-            url += "id=" + i + "&";
-        });
-        
-        request(url, function (err, response, body) {
-            var launchData = JSON.parse(body);
-            res.render('launches/favorites', {launchData});
-        }
-        );
-    });
-
 
 }
 
-// request(
-//     //get all Ids from favorites collection in database into an array and then
-//     //have a string URL builder for all those array items/IDs 
-//     //display the IDs pulling the API information 
-//     rootURL + req.params.id, function (err, response, body) {
-//     var launchData = JSON.parse(body);
-//     //launchData.launches[0] because need first item in array of launch
-//     res.render('launches/details', { l: launchData.launches[0] });
-// }
-// );
-
-function create(req, res) {
-    var favorite = new Favorite(req.body);
-    favorite.save(function (err) {
-        if (err) return res.render('/');
+function addToUser(req, res) {
+    //make sure launch isn't already in database
+    if (req.user.favorites.indexOf(req.params.id) !== -1) {
+        return res.redirect('/launches');
+    }
+    //add launch to the user's favorites array
+    req.user.favorites.push(req.params.id);
+    req.user.save(function (err) {
+        if (err) return res.redirect('/launches');
         res.redirect('/launches');
     });
 }
+
+

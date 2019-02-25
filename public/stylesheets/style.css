@@ -1,8 +1,50 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .1em;
+  padding: 20px;
 }
 
-a {
+nav > a {
   color: #00B7FF;
+  text-decoration: none;
+  margin: 0px 15px;
+}
+
+nav {
+  background-color: black;
+  color: white;
+  height: 50px;
+  text-align: right;
+  line-height: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #00B7FF50;
+}
+tr:nth-child(even) {
+  background-color: #00B7FF50;
+}
+
+.watch-btn {
+  padding: 10px 20px 11px;
+  font-size: 16px;
+  background-color: #FF7034;
+  color: white;
+  border-radius: 100px;
+}
+
+.details-link {
+  font-weight:bold;
+  color: #FF7034;
+  text-decoration: none;
 }

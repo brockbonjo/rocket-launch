@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1>UPCOMING LAUNCHES</h1>
-<table>
+<table class="upcoming-launches">
     <thead>
         <tr>
             <th>ROCKET MISSION</th>
@@ -21,11 +21,11 @@
             <td><%= l.location.name %></td>
             <td><%= (new Date(l.windowstart)).toDateString() %></td>
             <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
-            <td><a href="/launches/<%= l.id %>">DETAILS</a></td>
+            <td><a class="details-link" href="/launches/<%= l.id %>">DETAILS</a></td>
             <td>
-                <form method="POST" action="/favorites">
-                    <input type="hidden" name="launchId" value="<%= l.id %>" />
-                    <input type="submit" value="heart" />
+                <form method="POST" action="/favorites/<%= l.id %>">
+                    <input type="hidden" name="favorites" value="<%= l.id %>" />
+                    <input class="watch-btn" type="submit" value="watch" />
                 </form>
             </td>
         </tr>
