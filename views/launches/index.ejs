@@ -14,6 +14,7 @@
         </tr>
     </thead>
     <tbody>
+
         <% launchData.launches.forEach(function(l) { %>
         <tr>
             <td><%= l.name %></td>
@@ -22,21 +23,22 @@
             <td><%= (new Date(l.windowstart)).toDateString() %></td>
             <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
             <td><a class="details-link" href="/launches/<%= l.id %>">DETAILS</a></td>
-            <td>
-                <% if (user.favorites.indexOf(l.id) === -1) { %> 
+
+            <td> <% if (user && user.favorites.indexOf(l.id) === -1) { %>
                 <form method="POST" action="/favorites/<%= l.id %>">
                     <input type="hidden" name="favorites" value="<%= l.id %>" />
                     <input class="watch-btn" type="submit" value="watch" />
                 </form>
-                <% } else { %>
-                 <form method="POST" action="/favorites/delete/<%= l.id %>">
+                <% } else if (user) { %>
+                <form method="POST" action="/favorites/delete/<%= l.id %>">
                     <input type="hidden" name="favorites" value="<%= l.id %>" />
                     <input class="alreadywatching-btn" type="submit" value="watching" />
                 </form>
-                <% }; %>
+                <% }else{ %> Login to Watch <% } %>
             </td>
+            <% }); %>
         </tr>
-        <% }); %>
+
     </tbody>
 </table>
 
