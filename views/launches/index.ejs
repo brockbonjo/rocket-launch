@@ -23,13 +23,21 @@
             <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
             <td><a class="details-link" href="/launches/<%= l.id %>">DETAILS</a></td>
             <td>
+                <% if (user.favorites.indexOf(l.id) === -1) { %> 
                 <form method="POST" action="/favorites/<%= l.id %>">
                     <input type="hidden" name="favorites" value="<%= l.id %>" />
                     <input class="watch-btn" type="submit" value="watch" />
                 </form>
+                <% } else { %>
+                 <form method="POST" action="/favorites/delete/<%= l.id %>">
+                    <input type="hidden" name="favorites" value="<%= l.id %>" />
+                    <input class="alreadywatching-btn" type="submit" value="watching" />
+                </form>
+                <% }; %>
             </td>
         </tr>
         <% }); %>
     </tbody>
 </table>
+
 <%- include('../partials/footer') %>

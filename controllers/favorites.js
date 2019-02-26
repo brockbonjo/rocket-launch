@@ -5,22 +5,31 @@ const rootURL = 'https://launchlibrary.net/1.4/launch/';
 module.exports = {
     addToUser,
     show,
+    deleteFavorite,
 };
 
+function deleteFavorite(req, res) {
+    User.findById(req.user._id, function (err, user) {
+        user.favorites.remove(req.params.id);
+        user.save(function (err) {
+            if (err) return res.redirect('/favorites');
+            res.redirect('/favorites');;
+        })
+    })
+}
+
 function show(req, res) {
-    //populate the favorites property so you can use each item in its array to build a url to call from the API
-    User.findById(req.user._id)
-        .populate('favorites').exec(function (err, user) {
-            var url = rootURL + "?";
-            req.user.favorites.forEach(function (launchId) {
-                url += "id=" + launchId + "&";
-            });
-            //call url from API, parse the JSON and render the favorites view page
-            request(url, function (err, response, body) {
-                var launchData = JSON.parse(body);
-                res.render('launches/favorites', { launchData });
-            });
+    User.findOne({ name: req.user.name }, function (err, user) {
+        var url = rootURL + "?";
+        user.favorites.forEach(function (launchId) {
+            url += "id=" + launchId + "&";
         });
+        //call url from API, parse the JSON and render the favorites view page
+        request(url, function (err, response, body) {
+            var launchData = JSON.parse(body);
+            res.render('launches/favorites', { launchData , user: req.user});
+        });
+    });
 
 }
 

@@ -3,7 +3,9 @@ body {
   letter-spacing: .1em;
   padding: 20px;
 }
-
+h1 {
+  text-shadow: 2px 2px #00000050;
+}
 nav > a {
   color: #00B7FF;
   text-decoration: none;
@@ -35,17 +37,33 @@ tr:nth-child(even) {
   background-color: #00B7FF50;
 }
 
-.watch-btn {
+.watch-btn, .alreadywatching-btn {
   padding: 10px 20px 11px;
   font-size: 16px;
-  background-color: #FF7034;
+
   color: white;
   border-radius: 100px;
 }
 
+.watch-btn{
+  background-color: #FF7034;
+}
+.alreadywatching-btn{
+  background-color: #659D32;
+}
+.delete-btn {
+  padding: 5px 10px 5.5px;
+  font-size: 12px;
+  color: black;
+  background-color: #D3D3D3;
+  border-radius: 100px;
+  border: 1px solid grey;
+}
+
 .details-link {
-  font-weight:bold;
+  font-weight: bold;
   color: #FF7034;
+  text-shadow: 2px 2px #FF703450;
   text-decoration: none;
 }
 
