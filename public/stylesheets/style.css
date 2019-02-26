@@ -48,3 +48,8 @@ tr:nth-child(even) {
   color: #FF7034;
   text-decoration: none;
 }
+
+.details-display {
+  font-size: 20px;
+  line-height: 2;
+}
