@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+
+<h1>MY LAUNCH LIST</h1>
+
+<table class="my-launch-list">
+    <thead>
+        <tr>
+            <th></th>
+            <th>ROCKET MISSION</th>
+            <th>AGENCY</th>
+            <th>LOCATION</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% launchData.launches.forEach(function(l) { %>
+        <tr>
+            <td>
+                <form action="/favorites/delete/<%= l.id %>" method="POST">
+                    <button class="delete-btn" type="submit">X</button>
+                </form>
+            </td>
+            <td><%= l.name %></td>
+            <td><%= l.lsp.name %></td>
+            <td><%= l.location.name %></td>
+            <td><%= (new Date(l.windowstart)).toDateString() %></td>
+            <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
+            <td><a class="details-link" href="/launches/<%= l.id %>">DETAILS</a></td>
+        </tr>
+        <% }); %>
+
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>

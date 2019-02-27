@@ -5,7 +5,7 @@ var passport = require('passport');
 
 
 router.get('/', isLoggedIn, function (req, res, next) {
-  res.render('index');
+  res.redirect('/launches');
 });
 
 function isLoggedIn(req, res, next) {

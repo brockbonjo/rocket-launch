@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+<h1 class="detail-titles"> <%=l.name %></h1>
+
+<table class="details-display">
+    <tr>
+        <td>AGENCY</td>
+        <td><% if (l.lsp.name) { %>
+            <% var queryGoogleString = l.lsp.name.split(' ').join('+'); %>
+            <a href=https://www.google.com/search?q=<%=queryGoogleString%>><%= l.lsp && l.lsp.name %> </a> <%} else {%>
+                <%= l.lsp && l.lsp.name %> <%} %> </td> 
+    </tr> 
+    <tr>
+        <td>ROCKET</td>
+        <td><%= l.rocket && l.rocket.name %></td>
+    </tr>
+    <tr>
+        <td>LOCATION</td>
+        <td>
+            <a href=<%=l.location.pads[0].mapURL%>><%= l.location.name %> </a></td>
+    </tr>
+    <tr>
+        <td>DAY</td>
+        <td><%= (new Date(l.windowstart)).toDateString() %></td>
+    </tr>
+    <tr>
+        <td>TIME</td>
+        <td><%= (new Date(l.windowstart)).toLocaleTimeString() %></td>
+    </tr>
+    <tr>
+        <td>MISSION</td>
+        <td><%=l.missions[0] && l.missions[0].name %></td>
+    </tr>
+    <tr>
+        <td class="details-description" colspan="2"><%=l.missions[0] && l.missions[0].description%></td>
+    </tr>
+    <tr>
+        <td colspan="2"><% var queryString = l.name.split(' ').join('+') %>
+            <a href=https://www.youtube.com/results?search_query=<%=queryString%>>YOUTUBE VIDEOS</a> </td> </tr>
+                </table> <hr>
+
+
+                <div>
+                    <h2 class="detail-titles">Other Users Watching</h2>
+                    <% if (users.length) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name:</th>
+                                <th>Email:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(function(u) { %>
+                            <tr>
+                                <td><%= u.name %></td>
+                                <td><%= u.email %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+              
+                    <% } else { %>
+                    <div>No One Watching Yet</div>
+                    <% } %>
+                </div>
+
+                <%- include('../partials/footer') %>
