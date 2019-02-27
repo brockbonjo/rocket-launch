@@ -6,19 +6,32 @@ body {
 h1 {
   text-shadow: 2px 2px #00000050;
 }
-nav > a {
+
+/* nav bar  */
+
+nav > div > a {
   color: #00B7FF;
   text-decoration: none;
-  margin: 0px 15px;
+  margin: 15px;
+  flex: 1;
 }
 
 nav {
+  display: flex;
   background-color: black;
-  color: white;
-  height: 50px;
-  text-align: right;
   line-height: 50px;
+  justify-content: flex-end;
 }
+
+@media all and (max-width: 700px) {
+  
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* tables */
 
 table {
   border-collapse: collapse;
@@ -36,6 +49,7 @@ tr:nth-child(even) {
   background-color: #00B7FF50;
 }
 
+/* details page */
 
 .detail-titles {
   text-align: center;
@@ -53,6 +67,7 @@ tr:nth-child(even) {
   margin-right:auto;
 }
 
+/* buttons */
 
 .watch-btn, .alreadywatching-btn {
   padding: 10px 20px 11px;
