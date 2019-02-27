@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-<h1>UPCOMING LAUNCHES</h1>
+<h1>UPCOMING LAUNCHES </h1>
+
 <table class="upcoming-launches">
     <thead>
         <tr>
@@ -34,12 +35,13 @@
                     <input type="hidden" name="favorites" value="<%= l.id %>" />
                     <input class="alreadywatching-btn" type="submit" value="watching" />
                 </form>
-                <% }else{ %> Login to Watch <% } %>
+                <% }else{ } %>
             </td>
             <% }); %>
         </tr>
 
     </tbody>
 </table>
+
 
 <%- include('../partials/footer') %>

@@ -23,19 +23,36 @@ nav {
 table {
   border-collapse: collapse;
   width: 100%;
-}
 
+}
 th, td {
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
-
 th {
   background-color: #00B7FF50;
 }
 tr:nth-child(even) {
   background-color: #00B7FF50;
 }
+
+
+.detail-titles {
+  text-align: center;
+}
+.details-description {
+  line-height: 1;
+  text-align: left;
+}
+
+.details-display {
+  font-size: 20px;
+  line-height: 2;
+  width: 50%;
+  margin-left:auto; 
+  margin-right:auto;
+}
+
 
 .watch-btn, .alreadywatching-btn {
   padding: 10px 20px 11px;
@@ -67,7 +84,3 @@ tr:nth-child(even) {
   text-decoration: none;
 }
 
-.details-display {
-  font-size: 20px;
-  line-height: 2;
-}
