@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var request = require('request');
 const rootURL = 'https://launchlibrary.net/1.4/launch/next/150';
 var launchesCtrl = require('../controllers/launches');

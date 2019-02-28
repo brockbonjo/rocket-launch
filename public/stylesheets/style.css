@@ -23,14 +23,26 @@ nav {
   justify-content: flex-end;
 }
 
-@media all and (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   
   nav {
     flex-direction: column;
+    line-height: 30px;
     align-items: center;
-  }
-}
 
+
+  }
+
+
+.responsive-table {
+  overflow-x: auto;
+}
+  h1 {
+    text-align: center;
+  }
+
+
+}
 /* tables */
 
 table {
@@ -61,7 +73,7 @@ tr:nth-child(even) {
 
 .details-display {
   font-size: 20px;
-  line-height: 2;
+  line-height: 1.5;
   width: 50%;
   margin-left:auto; 
   margin-right:auto;
