@@ -17,4 +17,4 @@ Search box to filter launches by location and agency;
 "Sort by" button to sort launches by location closest to user location. 
 
 
-[Trello Board] (https://trello.com/b/uLrz2fk3/rocket-launch "Trello Board")
+[Trello Board](https://trello.com/b/uLrz2fk3/rocket-launch "Trello Board")
